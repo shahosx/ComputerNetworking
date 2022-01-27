@@ -3,14 +3,14 @@
 ### Output - The right answer for the specific question.
 
 def welcome_assignment_answers(question):
-    answer = ""
-    ##Students do not have to follow the skeleton for this assignment.
-    ##Another way to implement is using a "case" statements similar to C.
+    answer = ''
+    #Students do not have to follow the skeleton for this assignment.
+    #Another way to implement is using a "case" statements similar to C.
 
     if question == "Are encoding and encryption the same? - Yes/No":
         answer = "No"
     elif question == "Is it possible to decode a message without a key? - Yes/No":
-        answer = "Yes"
+        answer = "No"
     elif question == "Is a hashed message supposed to be un-hashed? - Yes/No":
         answer = "No"
     elif question == "What is the MD5 hashing value to the following message: 'NYU Computer Networking' - Use MD5 hash generator and use the answer in your code":
@@ -23,7 +23,7 @@ def welcome_assignment_answers(question):
 
 if __name__ == "__main__":
     #use this space to debug and verify that the program works
-    answers = ""
+
     debug_question = "Are encoding and encryption the same? - Yes/No"
     debug_question2 = "What layer from the TCP/IP model the protocol DHCP belongs to? - The answer should be a numeric number"
     debug_question3 = "Is it possible to decode a message without a key? - Yes/No"
