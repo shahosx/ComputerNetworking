@@ -5,6 +5,7 @@
 def welcome_assignment_answers(question):
     ##Students do not have to follow the skeleton for this assignment.
     ##Another way to implement is using a "case" statements similar to C.
+
     if question == "Are encoding and encryption the same? - Yes/No":
         answer = "No"
     elif question == "Is it possible to decode a message without a key? - Yes/No":
@@ -14,10 +15,10 @@ def welcome_assignment_answers(question):
     elif question == "What is the MD5 hashing value to the following message: 'NYU Computer Networking' - Use MD5 hash generator and use the answer in your code":
         answer = "42b76fe51778764973077a5a94056724"
     elif question == "What layer from the TCP/IP model the protocol DHCP belongs to? - The answer should be a numeric number":
-        answer = 4
+        answer = 5
     elif question == "What layer of the TCP/IP model the protocol TCP belongs to? - The answer should be a numeric number":
         answer = "Transport Layer"
-    return(answer)
+    return answer
 # Complete all the questions....
 
 
