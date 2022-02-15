@@ -1,40 +1,92 @@
-### welcome_assignment_answers
-### Input - All eight questions given in the assignment.
-### Output - The right answer for the specific question.
+from socket import *
+# In order to terminate the program
+import sys
 
-def welcome_assignment_answers(question):
-    #Students do not have to follow the skeleton for this assignment.
-    #Another way to implement is using a "case" statements similar to C.
-    if question == "Are encoding and encryption the same? - Yes/No":
-        answer = "No"
-    elif question == "Is it possible to decode a message without a key? - Yes/No":
-        answer = "Yes"
-    elif question == "Is a hashed message supposed to be un-hashed? - Yes/No":
-        answer = "No"
-    elif question == "What is the MD5 hashing value to the following message: 'NYU Computer Networking' - Use MD5 hash generator and use the answer in your code":
-        answer = "42b76fe51778764973077a5a94056724"
-    elif question == "What layer from the TCP/IP model the protocol DHCP belongs to? - The answer should be a numeric number":
-        answer = 4
-    elif question == "What layer of the TCP/IP model the protocol TCP belongs to? - The answer should be a numeric number":
-        answer = "Transport Layer "
-    return(answer)
-# Complete all the questions...
 
+def webServer(port=13331):
+    serverSocket = socket(AF_INET, SOCK_STREAM)
+    # Prepare a server socket
+    serverSocket.bind(("", port))
+    print("The server is ready to receive")
+    # Fill in start
+    serverSocket.listen(2)
+    print('Listening on port %s ...'% port)
+    # Fill in end
+
+    while True:
+        #Connection
+        # Establish the connection
+        #serverSocket.connect(port, addr)
+        #print('Ready to serve...')
+        # print('Ready to serve...')
+        connectionSocket, addr = serverSocket.accept()
+        # will accept any client info
+        #print(f"connection from {addr} has been established")
+        # Fill in start
+
+        # #Fill in end
+
+        try:
+
+            try:
+                #co
+                message = connectionSocket.recv(1024).decode()# Fill in start    #Fill in end
+                #print( "Decoded the message: "+message)
+                filename = message.split()[1]
+                f = open(filename[1:])
+                outputdata = f.read()
+
+                # Fill in start     #Fill in end
+                # Send one HTTP header line into socket.
+                #connectionSocket.send('HTTP/1.1 200 OK\r\n'.encode())
+                connectionSocket.send(outputdata.encode())
+                # Fill in start
+
+
+                # Fill in end
+
+                # Send the content of the requested file to the client
+                for i in range(0, len(outputdata)):
+                    connectionSocket.send(outputdata[i].encode())
+
+                connectionSocket.send("\r\n".encode())
+                connectionSocket.close()
+            except IOError:
+                print("you got into an error")
+            #connectionSocket.send("HTTP/1.1 404 Not Found\r\n".encode())
+            #connectionSocket.send("<html><head></head><body><h1> 404 Not Found</h1></body></html>\r\n")
+
+        except (ConnectionError, BrokenPipeError):
+            pass
+            print("you got into an error")
+
+
+        #print("failed to connect to %s on port %s" %(outputdata))
+        # Send response message for file not found (404)
+
+        # Fill in start
+
+        # Fill in end
+
+        # Close client socket
+        connectionSocket.close
+        # Fill in start
+
+        # Fill in end
+
+        #except (ConnectionResetError, BrokenPipeError):
+         #   pass
+
+    serverSocket.close()
+    sys.exit()  # Terminate the program after sending the corresponding data
 
 if __name__ == "__main__":
-    #use this space to debug and verify that the program works
-    debug_question = "Are encoding and encryption the same? - Yes/No"
-    debug_question2 = "What layer from the TCP/IP model the protocol DHCP belongs to? - The answer should be a numeric number"
-    debug_question3 = "Is it possible to decode a message without a key? - Yes/No"
-    print(welcome_assignment_answers(debug_question2))
+    webServer(13331)
 
-###Questions:
-###"In Slack, what is the secret passphrase posted in the #lab-python-getting-started channel posted by a TA?"
-###"Are encoding and encryption the same? - Yes/No"
-###"Is it possible to decrypt a message without a key? - Yes/No"
-###"Is it possible to decode a message without a key? - Yes/No"
-###"Is a hashed message supposed to be un-hashed? - Yes/No"
-###"What is the MD5 hashing value to the following message: 'NYU Computer Networking' - Use MD5 hash generator and use the answer in your code"
-###"Is MD5 a secured hashing algorithm? - Yes/No"
-###"What layer from the TCP/IP model the protocol DHCP belongs to? - The answer should be a numeric number"
-###"What layer of the TCP/IP model the protocol TCP belongs to? - The answer should be a numeric number"
+
+    #Questions:
+    #It's just once code to run the entire program?
+    # do we need to run the html file first
+    # why do we put things into two try
+
+
